@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://f0tw5gtt0l65"]
+
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_1qos4"]
+[ext_resource type="Texture2D" uid="uid://k5s5cll80hmt" path="res://scenes/enemy_ship.png" id="1_dh8cv"]
+[ext_resource type="PackedScene" uid="uid://bu7qn3eyuhlsg" path="res://scenes/weapon.tscn" id="3_i117o"]
+[ext_resource type="PackedScene" uid="uid://brwpx1xlrt2bb" path="res://scenes/enemy_bullet.tscn" id="4_pym6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5hy2"]
+size = Vector2(15.5, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jykdm"]
+radius = 400.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_1qos4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_m5hy2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_dh8cv")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_jykdm")
+
+[node name="WeaponLeft" parent="." instance=ExtResource("3_i117o")]
+position = Vector2(-10, 12)
+bullet_scene = ExtResource("4_pym6n")
+
+[node name="WeaponRight" parent="." instance=ExtResource("3_i117o")]
+position = Vector2(-10, -11)
+bullet_scene = ExtResource("4_pym6n")
+
+[node name="ShooterSpeed" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true

@@ -4,4 +4,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_576m3")]
+[node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" groups=["player_layer"] instance=ExtResource("1_576m3")]

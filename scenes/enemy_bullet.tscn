@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brwpx1xlrt2bb"]
+[gd_scene load_steps=7 format=3 uid="uid://brwpx1xlrt2bb"]
 
 [ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_mbgeb"]
 [ext_resource type="Texture2D" uid="uid://dgv605c2i5fna" path="res://assets/tiles.png" id="2_hq702"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqetu"]
-size = Vector2(16, 6)
+[ext_resource type="PackedScene" uid="uid://cq261lhbfp3ox" path="res://components/hitbox_component.tscn" id="3_7edb3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5cuo"]
 texture = ExtResource("2_hq702")
@@ -132,11 +130,11 @@ texture = ExtResource("2_hq702")
 [sub_resource type="TileSet" id="TileSet_c7n71"]
 sources/0 = SubResource("TileSetAtlasSource_l5cuo")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqetu"]
+size = Vector2(16, 6)
+
 [node name="EnemyBullet" type="Area2D"]
 script = ExtResource("1_mbgeb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nqetu")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(8, 8)
@@ -144,3 +142,11 @@ rotation = -1.5708
 tile_set = SubResource("TileSet_c7n71")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 0, 0)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_7edb3")]
+collision_layer = 0
+collision_mask = 2
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_nqetu")

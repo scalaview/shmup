@@ -133,7 +133,7 @@ sources/0 = SubResource("TileSetAtlasSource_l5cuo")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqetu"]
 size = Vector2(16, 6)
 
-[node name="EnemyBullet" type="Area2D"]
+[node name="EnemyBullet" type="Node2D"]
 script = ExtResource("1_mbgeb")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -144,8 +144,8 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 0, 0)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_7edb3")]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

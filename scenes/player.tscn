@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://weanipusdv4x"]
+[gd_scene load_steps=9 format=3 uid="uid://weanipusdv4x"]
 
 [ext_resource type="Texture2D" uid="uid://3k5r7d7oem87" path="res://scenes/ship.png" id="1_f085i"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_lhjf6"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bxx4tapyl1oka" path="res://components/hurtbox_component.tscn" id="6_q3bxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcj8q"]
+size = Vector2(27, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fy7q"]
 size = Vector2(27, 42)
 
 [node name="Player" type="CharacterBody2D"]
@@ -37,10 +40,14 @@ autostart = true
 [node name="HealthComponent" parent="." instance=ExtResource("5_aonfs")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_q3bxt")]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 0
+collision_mask = 4
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_hcj8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_1fy7q")

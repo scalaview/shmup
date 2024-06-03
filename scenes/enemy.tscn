@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://f0tw5gtt0l65"]
+[gd_scene load_steps=10 format=3 uid="uid://f0tw5gtt0l65"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_1qos4"]
 [ext_resource type="Texture2D" uid="uid://k5s5cll80hmt" path="res://scenes/enemy_ship.png" id="1_dh8cv"]
@@ -12,6 +12,9 @@ radius = 400.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5hy2"]
 size = Vector2(15.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7doe7"]
+size = Vector2(23, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_1qos4")
@@ -52,3 +55,7 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0.25, 0)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_m5hy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7doe7")

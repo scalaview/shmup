@@ -6,6 +6,7 @@ const PLAYER_WIDTH = 50
 const PLAYER_HEIGHT = 60
 
 @export var bullet_scene: PackedScene
+@export var wait_time: float = 0.5
 
 @onready var weapon_left: Weapon = $WeaponLeft
 @onready var weapon_right: Weapon =  $WeaponRight
@@ -15,6 +16,7 @@ var can_shoot = false
 
 func _ready():
 	shooter_speed.timeout.connect(on_shooter_speed_timeout)
+	shooter_speed.wait_time = wait_time
 
 func _physics_process(delta):
 	var movement_vector = get_movement_vector()

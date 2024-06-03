@@ -133,7 +133,7 @@ sources/0 = SubResource("TileSetAtlasSource_jojhm")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqetu"]
 size = Vector2(16, 7)
 
-[node name="PlayerBullet" type="Area2D"]
+[node name="PlayerBullet" type="Node2D"]
 script = ExtResource("1_qnxay")
 
 [node name="TileMap" type="TileMap" parent="."]

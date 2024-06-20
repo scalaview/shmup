@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dgv605c2i5fna" path="res://assets/tiles.png" id="1_gdw12"]
 [ext_resource type="Script" path="res://scenes/player_bullet.gd" id="1_qnxay"]
-[ext_resource type="PackedScene" uid="uid://cq261lhbfp3ox" path="res://components/hitbox_component.tscn" id="3_allxa"]
+[ext_resource type="PackedScene" uid="uid://cq261lhbfp3ox" path="res://components/hitbox_component.tscn" id="3_4ntko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jojhm"]
 texture = ExtResource("1_gdw12")
@@ -143,7 +143,7 @@ tile_set = SubResource("TileSet_mloc8")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0)
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_allxa")]
+[node name="HitboxComponent" parent="." instance=ExtResource("3_4ntko")]
 collision_layer = 2
 collision_mask = 0
 damage = 1

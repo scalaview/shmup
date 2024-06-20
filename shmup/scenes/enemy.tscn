@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://k5s5cll80hmt" path="res://scenes/enemy_ship.png" id="1_dh8cv"]
 [ext_resource type="PackedScene" uid="uid://bu7qn3eyuhlsg" path="res://scenes/weapon.tscn" id="3_i117o"]
 [ext_resource type="PackedScene" uid="uid://brwpx1xlrt2bb" path="res://scenes/enemy_bullet.tscn" id="4_pym6n"]
-[ext_resource type="PackedScene" uid="uid://dwlop30tveww" path="res://components/health_component.tscn" id="5_0hcu4"]
-[ext_resource type="PackedScene" uid="uid://bxx4tapyl1oka" path="res://components/hurtbox_component.tscn" id="5_7j18h"]
+[ext_resource type="PackedScene" uid="uid://dwlop30tveww" path="res://components/health_component.tscn" id="5_4o25o"]
+[ext_resource type="PackedScene" uid="uid://bxx4tapyl1oka" path="res://components/hurtbox_component.tscn" id="6_o2clt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jykdm"]
 radius = 400.0
@@ -44,9 +44,9 @@ wait_time = 1.5
 one_shot = true
 autostart = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_0hcu4")]
+[node name="HealthComponent" parent="." instance=ExtResource("5_4o25o")]
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_7j18h")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_o2clt")]
 collision_layer = 0
 collision_mask = 2
 health_component = NodePath("../HealthComponent")

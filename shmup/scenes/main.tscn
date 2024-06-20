@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6tilluuus3wk"]
+[gd_scene load_steps=5 format=3 uid="uid://c6tilluuus3wk"]
 
 [ext_resource type="PackedScene" uid="uid://weanipusdv4x" path="res://scenes/player.tscn" id="1_576m3"]
+[ext_resource type="PackedScene" uid="uid://cxo878oe5xrug" path="res://ui/score_bar.tscn" id="1_h1kgn"]
 [ext_resource type="PackedScene" uid="uid://csckw0dyxu7bs" path="res://managers/enemy_manager.tscn" id="1_ue8b7"]
 [ext_resource type="PackedScene" uid="uid://f0tw5gtt0l65" path="res://scenes/enemy.tscn" id="2_3v5lc"]
 
 [node name="Main" type="Node2D"]
+
+[node name="ScoreBar" parent="." instance=ExtResource("1_h1kgn")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("1_ue8b7")]
 enemy_scene = ExtResource("2_3v5lc")

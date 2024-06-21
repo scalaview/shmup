@@ -16,10 +16,10 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="ScoreText" type="Label" parent="MarginContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "Score: 00"
+text = "Score: 0"
 vertical_alignment = 1

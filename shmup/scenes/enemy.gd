@@ -7,9 +7,11 @@ var player: Node2D = null
 @onready var weapon_left: Weapon = $WeaponLeft
 @onready var weapon_right: Weapon =  $WeaponRight
 @onready var shooter_speed: Timer = $ShooterSpeed
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready():
 	$Detection.area_entered.connect(on_area_entered)
+	health_component.died.connect(on_died)
 	shooter_speed.timeout.connect(on_shooter_speed_timeout)
 	shooter_speed.wait_time = wait_time
 	
@@ -33,3 +35,9 @@ func shoot():
 
 func on_shooter_speed_timeout():
 	shoot()
+
+
+func on_died() -> void:
+	if is_queued_for_deletion():
+		return
+	GameStatsInstance.emit_score_changed_signal(1)

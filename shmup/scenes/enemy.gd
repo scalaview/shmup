@@ -16,6 +16,9 @@ func _ready():
 	shooter_speed.wait_time = wait_time
 	
 func _physics_process(_delta):
+	if global_position.x < 0:
+		queue_free()
+		return
 	var movement = Vector2(-2, 0)
 	
 	if player != null:

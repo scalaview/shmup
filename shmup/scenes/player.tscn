@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://weanipusdv4x"]
+[gd_scene load_steps=10 format=3 uid="uid://weanipusdv4x"]
 
 [ext_resource type="Texture2D" uid="uid://3k5r7d7oem87" path="res://scenes/ship.png" id="1_f085i"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_lhjf6"]
@@ -12,6 +12,9 @@ size = Vector2(27, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fy7q"]
 size = Vector2(27, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2aut"]
+size = Vector2(28, 42)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
@@ -48,6 +51,14 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_hcj8q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_1fy7q")
+
+[node name="OwnerArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OwnerArea2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_x2aut")

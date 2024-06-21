@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://f0tw5gtt0l65"]
+[gd_scene load_steps=11 format=3 uid="uid://f0tw5gtt0l65"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_1qos4"]
 [ext_resource type="Texture2D" uid="uid://k5s5cll80hmt" path="res://scenes/enemy_ship.png" id="1_dh8cv"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxx4tapyl1oka" path="res://components/hurtbox_component.tscn" id="6_o2clt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jykdm"]
-radius = 400.0
+radius = 540.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5hy2"]
 size = Vector2(15.5, 28)
@@ -16,7 +16,11 @@ size = Vector2(15.5, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7doe7"]
 size = Vector2(23, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bppht"]
+size = Vector2(22.45, 23.2307)
+
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_1qos4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -48,7 +52,7 @@ autostart = true
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_o2clt")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 16
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -59,3 +63,12 @@ shape = SubResource("RectangleShape2D_m5hy2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_7doe7")
+
+[node name="OwnerArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OwnerArea2D"]
+position = Vector2(0.258358, -0.621293)
+scale = Vector2(1.04603, 1.77535)
+shape = SubResource("RectangleShape2D_bppht")

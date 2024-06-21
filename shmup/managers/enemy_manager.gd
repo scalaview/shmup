@@ -10,10 +10,10 @@ func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	timer.wait_time = wait_time
 
-func get_spawn_position(_player: Node2D) -> Vector2:
+func get_spawn_position(player: Node2D) -> Vector2:
 	var window_vector = get_tree().get_root().size
 	var y_point = rng.randi_range(50, window_vector.y)
-	return Vector2(window_vector.x + 5, y_point)
+	return Vector2(player.global_position.x + window_vector.x , y_point)
 
 
 func on_timer_timeout():

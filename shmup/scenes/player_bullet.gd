@@ -14,3 +14,7 @@ func _process(delta):
 
 func on_hitbox_component_hited():
 	queue_free()
+
+func is_out_of_window(target: Node2D) -> bool:
+	var window_vector = get_tree().get_root().size
+	return target.global_position.x < -window_vector.x || target.global_position.x > window_vector.x 

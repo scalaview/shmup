@@ -5,6 +5,7 @@ const ACCELERATION_SMOOTHING = 25
 const PLAYER_WIDTH = 50
 const PLAYER_HEIGHT = 60
 
+
 @export var bullet_scene: PackedScene
 @export var wait_time: float = 0.5
 
@@ -18,6 +19,8 @@ func _ready():
 	$OwnerArea2D.area_entered.connect(on_enemy_area_entered)
 	shooter_speed.timeout.connect(on_shooter_speed_timeout)
 	shooter_speed.wait_time = wait_time
+	var window_vector = get_tree().get_root().size
+	global_position.x = -window_vector.x + PLAYER_WIDTH/2
 
 func _physics_process(delta):
 	var movement_vector = get_movement_vector()
@@ -27,8 +30,8 @@ func _physics_process(delta):
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
 	var window_vector = get_tree().get_root().size
-	global_position.x = clamp(global_position.x, PLAYER_WIDTH/2, window_vector.x - PLAYER_WIDTH/2)
-	#global_position.y = clamp(global_position.y, PLAYER_HEIGHT/2, window_vector.y - PLAYER_HEIGHT/2)
+	global_position.x = clamp(global_position.x, -window_vector.x + PLAYER_WIDTH/2, - PLAYER_WIDTH/2)
+	global_position.y = clamp(global_position.y, -window_vector.y + PLAYER_HEIGHT/2, window_vector.y - PLAYER_HEIGHT/2)
 	
 func _process(_delta):
 	if Input.get_action_strength("shoot") && can_shoot:

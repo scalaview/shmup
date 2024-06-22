@@ -8,28 +8,27 @@ var player: Node2D = null
 @onready var weapon_right: Weapon =  $WeaponRight
 @onready var shooter_speed: Timer = $ShooterSpeed
 @onready var health_component: HealthComponent = $HealthComponent
-
 func _ready():
-	$Detection.area_entered.connect(on_area_entered)
+	$Detection.area_entered.connect(on_detection_area_entered)
 	health_component.died.connect(on_died)
 	shooter_speed.timeout.connect(on_shooter_speed_timeout)
 	shooter_speed.wait_time = wait_time
 	
 func _physics_process(_delta):
-	if global_position.x < 0:
+	if is_out_of_window(self):
 		queue_free()
 		return
+		
 	var movement = Vector2(-2, 0)
-	
 	if player != null:
 		movement.y = (position.direction_to(player.global_position) * speed).y
 		
 	move_and_collide(movement)
 
 
-func on_area_entered(area: Area2D):
+func on_detection_area_entered(area: Area2D):
 	player = area
-
+	is_on_ceiling()
 func shoot():
 	shooter_speed.start()
 	weapon_left.shoot()
@@ -37,6 +36,8 @@ func shoot():
 
 
 func on_shooter_speed_timeout():
+	if is_out_of_window(self):
+		return
 	shoot()
 
 
@@ -44,3 +45,12 @@ func on_died() -> void:
 	if is_queued_for_deletion():
 		return
 	GameStatsInstance.emit_score_changed_signal(1)
+
+
+func on_owner_body_entered(other_node: Node2D) -> void:
+	queue_free()
+
+func is_out_of_window(target: Node2D) -> bool:
+	var window_vector = get_tree().get_root().size
+	return target.global_position.x < -window_vector.x || target.global_position.x > window_vector.x 
+

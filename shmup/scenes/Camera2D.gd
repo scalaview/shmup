@@ -10,6 +10,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	acquire_target()
+	var window_vector = get_tree().get_root().size
+	limit_top = -window_vector.y
+	limit_bottom = window_vector.y
 	global_position = global_position.lerp(target_position, 1.0 - exp(-delta * 20))
 
 func acquire_target():

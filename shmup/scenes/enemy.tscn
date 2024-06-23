@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://f0tw5gtt0l65"]
+[gd_scene load_steps=12 format=3 uid="uid://f0tw5gtt0l65"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_1qos4"]
 [ext_resource type="Texture2D" uid="uid://k5s5cll80hmt" path="res://scenes/enemy_ship.png" id="1_dh8cv"]
+[ext_resource type="PackedScene" uid="uid://dtfu283pwxkoc" path="res://scenes/effections/explosion.tscn" id="2_npths"]
 [ext_resource type="PackedScene" uid="uid://bu7qn3eyuhlsg" path="res://scenes/weapon.tscn" id="3_i117o"]
 [ext_resource type="PackedScene" uid="uid://brwpx1xlrt2bb" path="res://scenes/enemy_bullet.tscn" id="4_pym6n"]
 [ext_resource type="PackedScene" uid="uid://dwlop30tveww" path="res://components/health_component.tscn" id="5_4o25o"]
@@ -22,6 +23,7 @@ size = Vector2(22.45, 23.2307)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_1qos4")
+explosion_scenes = ExtResource("2_npths")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

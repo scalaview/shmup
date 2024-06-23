@@ -4,6 +4,7 @@ var player: Node2D = null
 
 @export var speed: int = 2
 @export var wait_time: float = 1.5
+@export var explosion_scenes: PackedScene
 @onready var weapon_left: Weapon = $WeaponLeft
 @onready var weapon_right: Weapon =  $WeaponRight
 @onready var shooter_speed: Timer = $ShooterSpeed
@@ -44,6 +45,9 @@ func on_shooter_speed_timeout():
 func on_died() -> void:
 	if is_queued_for_deletion():
 		return
+	var explosion = explosion_scenes.instantiate() as Node2D
+	get_parent().add_child(explosion)
+	explosion.global_position = global_position
 	GameStatsInstance.emit_score_changed_signal(1)
 
 

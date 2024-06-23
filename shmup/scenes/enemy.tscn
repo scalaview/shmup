@@ -44,7 +44,7 @@ position = Vector2(-10, -11)
 bullet_scene = ExtResource("4_pym6n")
 
 [node name="ShooterSpeed" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 one_shot = true
 autostart = true
 

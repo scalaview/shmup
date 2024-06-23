@@ -47,9 +47,6 @@ func on_died() -> void:
 	GameStatsInstance.emit_score_changed_signal(1)
 
 
-func on_owner_body_entered(other_node: Node2D) -> void:
-	queue_free()
-
 func is_out_of_window(target: Node2D) -> bool:
 	var window_vector = get_tree().get_root().size
 	return target.global_position.x < -window_vector.x || target.global_position.x > window_vector.x 

@@ -12,7 +12,7 @@ func _ready():
 
 func get_spawn_position(player: Node2D) -> Vector2:
 	var window_vector = get_tree().get_root().size
-	var y_point = rng.randi_range(50, window_vector.y)
+	var y_point = rng.randf_range(-window_vector.y, window_vector.y)
 	return Vector2(player.global_position.x + window_vector.x , y_point)
 
 
